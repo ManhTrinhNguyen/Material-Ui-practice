@@ -3,11 +3,56 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import ErrorPage from './error-page';
+import Authentication from './pages/Authentication/Authentication';
+import Database from './pages/Database/Database';
+import Functions from './pages/Functions/Functions';
+import Hosting from './pages/Hosting/Hosting';
+import MachineLearning from './pages/MachineLearning/MachineLearning';
+import Storage from './pages/Storage/Storage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+    {
+      path: "/authentication",
+      element: <Authentication />
+    }, 
+    {
+      path: "/database",
+      element: <Database />
+    }, 
+    {
+      path: "/functions",
+      element: <Functions />
+    }, 
+    {
+      path: "/hosting",
+      element: <Hosting />
+    }, 
+    {
+      path: "/machine-learning",
+      element: <MachineLearning />
+    }, 
+    {
+      path: "/storage",
+      element: <Storage />
+    }, 
+    ]
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
